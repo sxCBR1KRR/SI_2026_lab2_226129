@@ -1,4 +1,4 @@
-
+# SI_2026_lab2_226129
 # Втора лабораториска вежба по Софтверско инженерство
 
 Милош Пајкоски
@@ -20,29 +20,37 @@
 
 ## Тест случаи според критериумот Every statement
 
-| Test case | searchBookByTitle | borrowBook |
+| Test case | searchBookByTitle (Lines) | borrowBook (Lines) |
 | --- | --- | --- |
-| test 1 | * | * |
-| test 2 | * |  |
-| test 3 |  | * |
+| test 1 | 58-63, 67 | 74-78, 82 |
+| test 2 | 64-66 |  |
+| test 3 | 55-57 | 71-73 |
 
 Минимален број на тест случаи за оваа функција според Every statement критериумот е 3.
 
 ## Тест случаи според критериумот Every branch
 
-| Test case | searchBookByTitle | borrowBook |
+| Test case | searchBookByTitle (Branches) | borrowBook (Branches) |
 | --- | --- | --- |
-| test 1 | * | * |
-| test 2 | * | * |
-| test 3 | * | * |
-| test 4 |  | * |
+| test 1 | Title Match=T, Borrowed=F | Valid, Found, Not Borrowed |
+| test 2 | Title Match=F or Borrowed=T | Valid, Not Found |
+| test 3 | Results Not Empty=F | Valid, Found, Borrowed |
+| test 4 |  | Invalid Query (Empty title/author) |
 
 Минимален број на тест случаи за оваа функција според Every branch критериумот е 4.
 
 ## Тест случаи според критериумот Multiple condition
 
+### borrowBook: `title.isEmpty() || author.isEmpty()`
 | Condition | TT | TF | FT | FF |
 | --- | --- | --- | --- | --- |
-| `title.isEmpty() \\|\\| author.isEmpty()` | T | T | T | F |
+| `title.isEmpty() || author.isEmpty()` | * | * | * | * |
+
+Минимален број на тест случаи за оваа функција според Multiple condition критериумот е 4.
+
+### searchBookByTitle: `book.getTitle().equalsIgnoreCase(title) && !book.isBorrowed()`
+| Condition | TT | TF | FT | FF |
+| --- | --- | --- | --- | --- |
+| `title match && !borrowed` | * | * | * | * |
 
 Минимален број на тест случаи за оваа функција според Multiple condition критериумот е 4.

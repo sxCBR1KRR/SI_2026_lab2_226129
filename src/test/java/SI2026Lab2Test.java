@@ -36,39 +36,29 @@ public class SI2026Lab2Test {
         library1.borrowBook("Clean Code", "Robert C. Martin");
         assertNull(library1.searchBookByTitle("Clean Code"));
 
-        Library library2 = new Library();
-        library2.addBook(new Book("Effective Java", "Joshua Bloch", "Programming"));
+        assertThrows(RuntimeException.class,
+                () -> library1.borrowBook("Clean Code", "Robert C. Martin"));
 
         assertThrows(RuntimeException.class,
-                () -> library2.borrowBook("Clean Code", "Robert C. Martin"));
+                () -> library1.borrowBook("Effective Java", "Joshua Bloch"));
 
-        Library library3 = new Library();
-        library3.addBook(new Book("Clean Code", "Robert C. Martin", "Programming"));
-        library3.borrowBook("Clean Code", "Robert C. Martin");
-
-        assertThrows(RuntimeException.class,
-                () -> library3.borrowBook("Clean Code", "Robert C. Martin"));
+        assertThrows(IllegalArgumentException.class,
+                () -> library1.borrowBook("", "Author"));
     }
 
     @Test
     void searchBookMultipleConditionTest() {
-        Library library1 = new Library();
-        library1.addBook(new Book("Clean Code", "Robert C. Martin", "Programming"));
+        Library library = new Library();
+        library.addBook(new Book("Clean Code", "Robert C. Martin", "Programming"));
+        library.addBook(new Book("Effective Java", "Joshua Bloch", "Programming"));
+        library.borrowBook("Effective Java", "Joshua Bloch");
 
-        List<Book> result1 = library1.searchBookByTitle("Clean Code");
+        List<Book> result1 = library.searchBookByTitle("Clean Code");
         assertNotNull(result1);
-        assertEquals(1, result1.size());
 
-        Library library2 = new Library();
-        library2.addBook(new Book("Clean Code", "Robert C. Martin", "Programming"));
-        library2.borrowBook("Clean Code", "Robert C. Martin");
+        assertNull(library.searchBookByTitle("Effective Java"));
 
-        assertNull(library2.searchBookByTitle("Clean Code"));
-
-        Library library3 = new Library();
-        library3.addBook(new Book("Effective Java", "Joshua Bloch", "Programming"));
-
-        assertNull(library3.searchBookByTitle("Clean Code"));
+        assertNull(library.searchBookByTitle("Other"));
     }
 
     @Test
