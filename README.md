@@ -3,4 +3,4 @@
 
 Милош Пајкоски
 226129
-milosh.pajkoski@students.finki.ukim.mk
+
