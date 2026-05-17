@@ -41,8 +41,10 @@
 
 ## Тест случаи според критериумот Multiple condition
 
+## Тест случаи според критериумот Multiple condition
+
 | Condition | TT | TF | FT | FF |
 | --- | --- | --- | --- | --- |
-| `title.isEmpty() || author.isEmpty()` | * | * | * | * |
+| `title.isEmpty() \\|\\| author.isEmpty()` | T | T | T | F |
 
 Минимален број на тест случаи за оваа функција според Multiple condition критериумот е 4.
