@@ -41,8 +41,6 @@
 
 ## Тест случаи според критериумот Multiple condition
 
-## Тест случаи според критериумот Multiple condition
-
 | Condition | TT | TF | FT | FF |
 | --- | --- | --- | --- | --- |
 | `title.isEmpty() \\|\\| author.isEmpty()` | T | T | T | F |
